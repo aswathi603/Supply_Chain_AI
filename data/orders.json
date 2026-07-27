@@ -1,0 +1,8 @@
+[
+  {"id": "ORD-9001", "customer_id": "CUST-01", "customer_name": "Acme Retail", "product": "Consumer Electronics", "units": 4000, "value_usd": 168000, "priority": "Premium", "promised_date": "2026-03-05", "status": "In Progress"},
+  {"id": "ORD-9002", "customer_id": "CUST-02", "customer_name": "TechCorp EU", "product": "Semiconductors", "units": 200, "value_usd": 320000, "priority": "Strategic", "promised_date": "2026-02-28", "status": "At Risk"},
+  {"id": "ORD-9003", "customer_id": "CUST-03", "customer_name": "AutoMakers Inc", "product": "Auto Sensors", "units": 1500, "value_usd": 240000, "priority": "Strategic", "promised_date": "2026-03-02", "status": "At Risk"},
+  {"id": "ORD-9004", "customer_id": "CUST-04", "customer_name": "GlobalMart", "product": "Textiles", "units": 8000, "value_usd": 112000, "priority": "Standard", "promised_date": "2026-03-15", "status": "In Progress"},
+  {"id": "ORD-9005", "customer_id": "CUST-05", "customer_name": "EnergyCo", "product": "Batteries", "units": 2000, "value_usd": 116000, "priority": "Premium", "promised_date": "2026-03-10", "status": "In Progress"},
+  {"id": "ORD-9006", "customer_id": "CUST-01", "customer_name": "Acme Retail", "product": "Consumer Electronics", "units": 2200, "value_usd": 92400, "priority": "Premium", "promised_date": "2026-02-27", "status": "At Risk"}
+]

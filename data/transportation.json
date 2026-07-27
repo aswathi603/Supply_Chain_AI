@@ -1,0 +1,6 @@
+[
+  {"mode": "Ocean", "avg_cost_per_km_usd": 0.16, "avg_days_per_1000km": 1.8, "co2_kg_per_1000km": 62, "reliability": 0.88},
+  {"mode": "Air", "avg_cost_per_km_usd": 2.30, "avg_days_per_1000km": 0.3, "co2_kg_per_1000km": 540, "reliability": 0.95},
+  {"mode": "Rail", "avg_cost_per_km_usd": 0.55, "avg_days_per_1000km": 1.2, "co2_kg_per_1000km": 36, "reliability": 0.86},
+  {"mode": "Road", "avg_cost_per_km_usd": 0.60, "avg_days_per_1000km": 0.9, "co2_kg_per_1000km": 158, "reliability": 0.90}
+]

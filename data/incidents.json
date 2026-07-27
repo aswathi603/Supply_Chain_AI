@@ -1,0 +1,7 @@
+[
+  {"id": "INC-001", "type": "Port Congestion", "severity": "High", "location": "Los Angeles Port", "affected_shipments": ["SHP-2002", "SHP-2004"], "started": "2026-02-18", "status": "Open", "expected_resolution_days": 5, "impact_usd": 220000},
+  {"id": "INC-002", "type": "Customs", "severity": "Medium", "location": "Singapore Customs", "affected_shipments": ["SHP-2003"], "started": "2026-02-20", "status": "Open", "expected_resolution_days": 2, "impact_usd": 60000},
+  {"id": "INC-003", "type": "Weather", "severity": "Critical", "location": "South China Sea", "affected_shipments": ["SHP-2001", "SHP-2010"], "started": "2026-02-19", "status": "Open", "expected_resolution_days": 4, "impact_usd": 340000},
+  {"id": "INC-004", "type": "Strike", "severity": "High", "location": "Ho Chi Minh Port", "affected_shipments": ["SHP-2005"], "started": "2026-02-17", "status": "Open", "expected_resolution_days": 6, "impact_usd": 95000},
+  {"id": "INC-005", "type": "Mechanical", "severity": "Low", "location": "Mumbai", "affected_shipments": ["SHP-2007"], "started": "2026-02-21", "status": "Resolved", "expected_resolution_days": 1, "impact_usd": 8000}
+]

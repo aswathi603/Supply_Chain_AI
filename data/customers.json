@@ -1,0 +1,7 @@
+[
+  {"id": "CUST-01", "name": "Acme Retail", "tier": "Premium", "region": "North America", "annual_revenue_usd": 12400000},
+  {"id": "CUST-02", "name": "TechCorp EU", "tier": "Strategic", "region": "Europe", "annual_revenue_usd": 22800000},
+  {"id": "CUST-03", "name": "AutoMakers Inc", "tier": "Strategic", "region": "North America", "annual_revenue_usd": 31500000},
+  {"id": "CUST-04", "name": "GlobalMart", "tier": "Standard", "region": "APAC", "annual_revenue_usd": 8600000},
+  {"id": "CUST-05", "name": "EnergyCo", "tier": "Premium", "region": "Middle East", "annual_revenue_usd": 14200000}
+]

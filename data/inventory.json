@@ -1,0 +1,12 @@
+[
+  {"sku": "SKU-EL-001", "product": "Consumer Electronics", "warehouse_id": "WH-01", "units_on_hand": 8400, "reorder_point": 5000, "safety_stock": 2000, "unit_cost_usd": 42, "days_of_supply": 21},
+  {"sku": "SKU-EL-001", "product": "Consumer Electronics", "warehouse_id": "WH-02", "units_on_hand": 3200, "reorder_point": 5000, "safety_stock": 2000, "unit_cost_usd": 42, "days_of_supply": 8},
+  {"sku": "SKU-SC-100", "product": "Semiconductors", "warehouse_id": "WH-03", "units_on_hand": 420, "reorder_point": 800, "safety_stock": 300, "unit_cost_usd": 1600, "days_of_supply": 6},
+  {"sku": "SKU-BAT-200", "product": "Batteries", "warehouse_id": "WH-02", "units_on_hand": 5100, "reorder_point": 3000, "safety_stock": 1200, "unit_cost_usd": 58, "days_of_supply": 34},
+  {"sku": "SKU-AS-300", "product": "Auto Sensors", "warehouse_id": "WH-02", "units_on_hand": 1200, "reorder_point": 2500, "safety_stock": 800, "unit_cost_usd": 160, "days_of_supply": 5},
+  {"sku": "SKU-TX-400", "product": "Textiles", "warehouse_id": "WH-04", "units_on_hand": 14200, "reorder_point": 6000, "safety_stock": 2500, "unit_cost_usd": 14, "days_of_supply": 42},
+  {"sku": "SKU-PL-500", "product": "Polymers", "warehouse_id": "WH-01", "units_on_hand": 6800, "reorder_point": 4000, "safety_stock": 1500, "unit_cost_usd": 32, "days_of_supply": 25},
+  {"sku": "SKU-RM-600", "product": "Raw Materials", "warehouse_id": "WH-05", "units_on_hand": 22000, "reorder_point": 8000, "safety_stock": 3000, "unit_cost_usd": 7, "days_of_supply": 55},
+  {"sku": "SKU-AP-700", "product": "Auto Parts", "warehouse_id": "WH-02", "units_on_hand": 2900, "reorder_point": 2000, "safety_stock": 800, "unit_cost_usd": 55, "days_of_supply": 18},
+  {"sku": "SKU-EL-001", "product": "Consumer Electronics", "warehouse_id": "WH-06", "units_on_hand": 1900, "reorder_point": 3000, "safety_stock": 1000, "unit_cost_usd": 42, "days_of_supply": 7}
+]

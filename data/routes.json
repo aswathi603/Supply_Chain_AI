@@ -1,0 +1,8 @@
+[
+  {"id": "RT-01", "from": "Zhengzhou", "to": "Rotterdam", "mode": "Ocean", "distance_km": 19800, "avg_days": 32, "cost_per_container_usd": 3200, "co2_kg_per_container": 1200, "reliability": 0.88},
+  {"id": "RT-02", "from": "Zhengzhou", "to": "Rotterdam", "mode": "Rail", "distance_km": 10500, "avg_days": 18, "cost_per_container_usd": 5800, "co2_kg_per_container": 380, "reliability": 0.82},
+  {"id": "RT-03", "from": "Hsinchu", "to": "Rotterdam", "mode": "Air", "distance_km": 9800, "avg_days": 3, "cost_per_container_usd": 22000, "co2_kg_per_container": 5100, "reliability": 0.95},
+  {"id": "RT-04", "from": "Stuttgart", "to": "Los Angeles", "mode": "Air", "distance_km": 9500, "avg_days": 3, "cost_per_container_usd": 24000, "co2_kg_per_container": 5300, "reliability": 0.94},
+  {"id": "RT-05", "from": "Stuttgart", "to": "Los Angeles", "mode": "Ocean", "distance_km": 14200, "avg_days": 22, "cost_per_container_usd": 3600, "co2_kg_per_container": 1100, "reliability": 0.90},
+  {"id": "RT-06", "from": "Monterrey", "to": "Los Angeles", "mode": "Road", "distance_km": 2400, "avg_days": 2, "cost_per_container_usd": 1400, "co2_kg_per_container": 380, "reliability": 0.93}
+]

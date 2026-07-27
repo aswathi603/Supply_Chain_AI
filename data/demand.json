@@ -1,0 +1,22 @@
+[
+  {"product": "Consumer Electronics", "week": "2026-W06", "forecast_units": 6200, "actual_units": 6100},
+  {"product": "Consumer Electronics", "week": "2026-W07", "forecast_units": 6400, "actual_units": 6500},
+  {"product": "Consumer Electronics", "week": "2026-W08", "forecast_units": 6700, "actual_units": 7200},
+  {"product": "Consumer Electronics", "week": "2026-W09", "forecast_units": 7000, "actual_units": null},
+  {"product": "Consumer Electronics", "week": "2026-W10", "forecast_units": 7300, "actual_units": null},
+  {"product": "Semiconductors", "week": "2026-W06", "forecast_units": 320, "actual_units": 340},
+  {"product": "Semiconductors", "week": "2026-W07", "forecast_units": 340, "actual_units": 360},
+  {"product": "Semiconductors", "week": "2026-W08", "forecast_units": 360, "actual_units": 410},
+  {"product": "Semiconductors", "week": "2026-W09", "forecast_units": 400, "actual_units": null},
+  {"product": "Semiconductors", "week": "2026-W10", "forecast_units": 430, "actual_units": null},
+  {"product": "Auto Sensors", "week": "2026-W06", "forecast_units": 1400, "actual_units": 1350},
+  {"product": "Auto Sensors", "week": "2026-W07", "forecast_units": 1450, "actual_units": 1500},
+  {"product": "Auto Sensors", "week": "2026-W08", "forecast_units": 1500, "actual_units": 1620},
+  {"product": "Auto Sensors", "week": "2026-W09", "forecast_units": 1600, "actual_units": null},
+  {"product": "Auto Sensors", "week": "2026-W10", "forecast_units": 1680, "actual_units": null},
+  {"product": "Batteries", "week": "2026-W06", "forecast_units": 2100, "actual_units": 2000},
+  {"product": "Batteries", "week": "2026-W07", "forecast_units": 2150, "actual_units": 2200},
+  {"product": "Batteries", "week": "2026-W08", "forecast_units": 2200, "actual_units": 2300},
+  {"product": "Batteries", "week": "2026-W09", "forecast_units": 2280, "actual_units": null},
+  {"product": "Batteries", "week": "2026-W10", "forecast_units": 2350, "actual_units": null}
+]

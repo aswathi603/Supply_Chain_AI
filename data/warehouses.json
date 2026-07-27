@@ -1,0 +1,8 @@
+[
+  {"id": "WH-01", "name": "Rotterdam DC", "country": "Netherlands", "city": "Rotterdam", "lat": 51.92, "lon": 4.48, "capacity_units": 120000, "used_units": 96000, "utilization": 0.80, "type": "Distribution"},
+  {"id": "WH-02", "name": "Los Angeles Hub", "country": "USA", "city": "Los Angeles", "lat": 33.94, "lon": -118.24, "capacity_units": 150000, "used_units": 130000, "utilization": 0.87, "type": "Distribution"},
+  {"id": "WH-03", "name": "Singapore Cross-Dock", "country": "Singapore", "city": "Singapore", "lat": 1.35, "lon": 103.82, "capacity_units": 90000, "used_units": 54000, "utilization": 0.60, "type": "Cross-Dock"},
+  {"id": "WH-04", "name": "Dubai Regional", "country": "UAE", "city": "Dubai", "lat": 25.27, "lon": 55.30, "capacity_units": 80000, "used_units": 62000, "utilization": 0.78, "type": "Distribution"},
+  {"id": "WH-05", "name": "São Paulo DC", "country": "Brazil", "city": "Sao Paulo", "lat": -23.55, "lon": -46.63, "capacity_units": 70000, "used_units": 41000, "utilization": 0.59, "type": "Distribution"},
+  {"id": "WH-06", "name": "Mumbai Central", "country": "India", "city": "Mumbai", "lat": 19.07, "lon": 72.87, "capacity_units": 65000, "used_units": 57000, "utilization": 0.88, "type": "Distribution"}
+]
