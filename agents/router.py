@@ -1,13 +1,15 @@
 """
 Router Module
 
-Routes the user query to the appropriate specialist agent.
+Routes user queries to the appropriate CrisisOps AI agent.
+Returns "unsupported" for questions outside the Supply Chain domain.
 """
 
 from typing import Dict
 
+
 # ==========================================================
-# Agent Keywords
+# Supply Chain Keywords
 # ==========================================================
 
 KEYWORDS: Dict[str, list[str]] = {
@@ -15,14 +17,21 @@ KEYWORDS: Dict[str, list[str]] = {
     "shipment": [
         "shipment",
         "ship",
+        "shipping",
         "delivery",
         "delay",
+        "delayed",
         "transit",
         "route",
         "reroute",
         "tracking",
         "eta",
         "transport",
+        "container",
+        "freight",
+        "cargo",
+        "port",
+        "customs",
     ],
 
     "inventory": [
@@ -34,6 +43,8 @@ KEYWORDS: Dict[str, list[str]] = {
         "low stock",
         "reorder",
         "availability",
+        "inventory level",
+        "storage",
     ],
 
     "supplier": [
@@ -43,6 +54,7 @@ KEYWORDS: Dict[str, list[str]] = {
         "procurement",
         "purchase",
         "alternate supplier",
+        "replacement supplier",
         "sourcing",
     ],
 
@@ -52,10 +64,11 @@ KEYWORDS: Dict[str, list[str]] = {
         "problem",
         "disruption",
         "weather",
-        "customs",
-        "port",
         "strike",
         "damage",
+        "risk",
+        "critical",
+        "customs",
     ],
 
     "recovery": [
@@ -63,8 +76,9 @@ KEYWORDS: Dict[str, list[str]] = {
         "recovery",
         "mitigation",
         "resolve",
-        "recommend",
         "solution",
+        "recommend",
+        "recommendation",
         "alternative",
         "replan",
     ],
@@ -74,45 +88,105 @@ KEYWORDS: Dict[str, list[str]] = {
         "summary",
         "dashboard",
         "analytics",
-        "kpi",
         "executive",
+        "kpi",
         "performance",
+        "health",
+        "overview",
+        "brief",
     ],
 
     "digital_twin": [
-        "simulate",
         "simulation",
+        "simulate",
         "scenario",
         "digital twin",
         "what if",
+        "comparison",
         "compare",
-        "forecast",
+        "rerouting",
     ],
-    
+
     "forecasting": [
-
         "forecast",
-
+        "forecasting",
         "prediction",
-
         "predict",
-
         "future",
-
-        "next week",
-
-        "next month",
-
         "trend",
-
+        "next week",
+        "next month",
         "growth",
-
-        "demand",
-
         "capacity",
-
+        "demand",
+        "utilization",
     ],
 }
+
+
+# ==========================================================
+# Out of Domain Keywords
+# ==========================================================
+
+UNSUPPORTED_KEYWORDS = [
+
+    # Programming
+    "python",
+    "java",
+    "javascript",
+    "typescript",
+    "html",
+    "css",
+    "react",
+    "node",
+    "django",
+    "flask",
+    "spring",
+    "sql",
+    "mongodb",
+
+    # CS
+    "oops",
+    "oop",
+    "object oriented",
+    "algorithm",
+    "algorithms",
+    "data structure",
+    "linked list",
+    "stack",
+    "queue",
+    "tree",
+    "graph",
+    "operating system",
+    "computer network",
+    "dbms",
+
+    # AI
+    "machine learning",
+    "deep learning",
+    "cnn",
+    "rnn",
+    "llm",
+    "chatgpt",
+
+    # General knowledge
+    "history",
+    "physics",
+    "chemistry",
+    "biology",
+    "geography",
+    "politics",
+    "movie",
+    "movies",
+    "music",
+    "cricket",
+    "football",
+    "ipl",
+    "fifa",
+    "weather today",
+    "news",
+
+]
 
 
 # ==========================================================
@@ -122,18 +196,27 @@ KEYWORDS: Dict[str, list[str]] = {
 def route(query: str) -> str:
     """
     Returns the best matching agent.
-
-    Args:
-        query: User query
-
-    Returns:
-        Agent name
+    Returns 'unsupported' for non-supply-chain queries.
     """
 
     if not query:
-        return "reporting"
+        return "unsupported"
 
-    query = query.lower()
+    query = query.lower().strip()
+
+    # ---------------------------------------
+    # Explicit Out-of-Domain Detection
+    # ---------------------------------------
+
+    for keyword in UNSUPPORTED_KEYWORDS:
+
+        if keyword in query:
+
+            return "unsupported"
+
+    # ---------------------------------------
+    # Score all supply-chain agents
+    # ---------------------------------------
 
     scores = {}
 
@@ -144,43 +227,54 @@ def route(query: str) -> str:
         for word in words:
 
             if word in query:
+
                 score += 1
 
         scores[agent] = score
 
     best_agent = max(scores, key=scores.get)
 
+    # No supply-chain keyword found
+
     if scores[best_agent] == 0:
-        return "reporting"
+
+        return "unsupported"
 
     return best_agent
 
 
 # ==========================================================
-# Confidence (Useful for Supervisor)
+# Confidence Score
 # ==========================================================
 
 def confidence(query: str) -> float:
     """
-    Returns routing confidence between 0 and 1.
+    Returns routing confidence.
     """
 
     query = query.lower()
 
-    total_matches = 0
-
+    total = 0
     best = 0
 
     for words in KEYWORDS.values():
 
-        score = sum(1 for word in words if word in query)
+        score = sum(
 
-        total_matches += score
+            1
 
-        if score > best:
-            best = score
+            for word in words
 
-    if total_matches == 0:
+            if word in query
+
+        )
+
+        total += score
+
+        best = max(best, score)
+
+    if total == 0:
+
         return 0.0
 
-    return round(best / total_matches, 2)
+    return round(best / total, 2)
