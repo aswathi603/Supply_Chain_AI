@@ -27,30 +27,38 @@ def supervisor_node(state):
 
 def agent_node(state):
 
-    fn = REGISTRY.get(
+    # Handle unsupported questions
+    if state["route"] == "unsupported":
 
-        state["route"],
+        state["response"] = (
+            "Sorry, I can't answer that question because it is outside my knowledge domain.\n\n"
+            "I am designed specifically for Supply Chain Intelligence and Crisis Management.\n\n"
+            "I can help with:\n"
+            "• Shipments\n"
+            "• Inventory\n"
+            "• Suppliers\n"
+            "• Warehouses\n"
+            "• Logistics\n"
+            "• Shipment Delays\n"
+            "• Demand Forecasting\n"
+            "• Digital Twin Simulations\n"
+            "• Recovery Planning\n"
+            "• Executive Reporting\n\n"
+            "Please ask a supply-chain-related question."
+        )
 
-        REGISTRY["reporting"]
+        state["requires_approval"] = False
 
-    )
+        return state
 
-    result = fn(
+    fn = REGISTRY[state["route"]]
 
-        state["query"]
-
-    )
+    result = fn(state["query"])
 
     state["response"] = result
 
     state["requires_approval"] = (
-
-        state["route"]
-
-        ==
-
-        "recovery"
-
+        state["route"] == "recovery"
     )
 
     return state
