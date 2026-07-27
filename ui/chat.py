@@ -3,7 +3,6 @@ Chat Interface
 """
 
 from datetime import datetime
-
 import streamlit as st
 
 from graph.workflow import run_workflow
@@ -102,11 +101,12 @@ PROMPT_GROUPS = {
         "Run an inventory redistribution simulation.",
 
     ],
+
 }
 
 
 # ==========================================================
-# Sidebar - Chat History
+# Sidebar
 # ==========================================================
 
 def render_sidebar_history():
@@ -115,6 +115,10 @@ def render_sidebar_history():
 
         st.subheader("💬 Chats")
 
+        # -----------------------------
+        # New Chat
+        # -----------------------------
+
         if st.button(
             "➕ New Chat",
             use_container_width=True,
@@ -122,30 +126,59 @@ def render_sidebar_history():
             memory.new_chat()
             st.rerun()
 
-        st.write("")
+        # -----------------------------
+        # Clear Current Chat
+        # -----------------------------
 
-        for chat in memory.all_chats():
+        if st.button(
+            "🗑 Clear Current Chat",
+            use_container_width=True,
+        ):
 
-            col1, col2 = st.columns([5, 1])
+            current = memory.current_chat()
 
-            with col1:
+            if current:
 
-                if st.button(
-                    chat["title"],
-                    key=f"chat_{chat['id']}",
-                    use_container_width=True,
-                ):
-                    memory.switch_chat(chat["id"])
-                    st.rerun()
+                current["messages"] = []
 
-            with col2:
+                current["title"] = "New Chat"
 
-                if st.button(
-                    "🗑",
-                    key=f"delete_{chat['id']}",
-                ):
-                    memory.delete_chat(chat["id"])
-                    st.rerun()
+            st.rerun()
+
+        st.divider()
+
+        st.markdown("### 📜 Chat History")
+
+        chats = memory.all_chats()
+
+        if not chats:
+
+            st.caption("No previous chats.")
+
+        else:
+
+            for chat in chats:
+
+                col1, col2 = st.columns([6,1])
+
+                with col1:
+
+                    if st.button(
+                        chat["title"],
+                        key=f"chat_{chat['id']}",
+                        use_container_width=True,
+                    ):
+                        memory.switch_chat(chat["id"])
+                        st.rerun()
+
+                with col2:
+
+                    if st.button(
+                        "❌",
+                        key=f"delete_{chat['id']}",
+                    ):
+                        memory.delete_chat(chat["id"])
+                        st.rerun()
 
         st.divider()
 
@@ -157,12 +190,14 @@ def render_sidebar_history():
             st.rerun()
 
 
-
 # ==========================================================
 # Chat Page
 # ==========================================================
 
 def render_chat():
+
+    # Sidebar
+    render_sidebar_history()
 
     section("💬 CrisisOps AI Assistant")
 
@@ -204,22 +239,8 @@ def render_chat():
     )
 
     if query:
+
         process_query(query)
-
-    st.write("")
-
-    c1, c2 = st.columns([1, 5])
-
-    with c1:
-
-        if st.button(
-            "🗑 Clear",
-            use_container_width=True,
-        ):
-
-            memory.clear()
-
-            st.rerun()
 
 
 # ==========================================================
@@ -231,9 +252,13 @@ def render_history():
     history = memory.history()
 
     if not history:
+
+        st.info(
+            "Start a new conversation by selecting a quick action or asking a question below."
+        )
         return
 
-    st.subheader("Conversation")
+    st.subheader("💬 Conversation")
 
     for message in history:
 
@@ -242,6 +267,12 @@ def render_history():
             with st.chat_message("user"):
 
                 st.write(message["content"])
+
+                if message.get("time"):
+
+                    st.caption(
+                        f"🕒 {message['time']}"
+                    )
 
         elif message["role"] == "assistant":
 
@@ -266,11 +297,16 @@ def render_history():
 
 def process_query(query: str):
 
-    # Store the user's question
+    # Store user message
+
     memory.add(
+
         role="user",
+
         content=query,
+
         time=datetime.now().strftime("%H:%M:%S"),
+
     )
 
     with st.spinner("Analyzing supply chain..."):
@@ -280,33 +316,53 @@ def process_query(query: str):
             result = run_workflow(query)
 
             response = result.get(
+
                 "response",
-                "No response generated.",
+
+                "No response generated."
+
             )
 
             agent = result.get(
+
                 "agent",
-                "Supervisor",
+
+                "Supervisor"
+
             )
 
-            # Store the assistant response
+            # Store assistant response
+
             memory.add(
+
                 role="assistant",
+
                 content=response,
+
                 agent=agent,
+
                 time=datetime.now().strftime("%H:%M:%S"),
+
             )
 
         except Exception as ex:
 
             memory.add(
+
                 role="assistant",
+
                 content=(
+
                     "An unexpected error occurred.\n\n"
+
                     f"{type(ex).__name__}: {ex}"
+
                 ),
+
                 agent="System",
+
                 time=datetime.now().strftime("%H:%M:%S"),
+
             )
 
     st.rerun()
