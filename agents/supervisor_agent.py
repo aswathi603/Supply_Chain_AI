@@ -26,6 +26,7 @@ from agents import (
 # ============================================================
 
 REGISTRY = {
+
     "shipment": shipment_agent.run,
     "inventory": inventory_agent.run,
     "supplier": supplier_agent.run,
@@ -34,7 +35,9 @@ REGISTRY = {
     "reporting": reporting_agent.run,
     "digital_twin": digital_twin_agent.run,
     "forecasting": forecasting_agent.run,
+
     "unsupported": unsupported_agent.run,
+
 }
 
 
@@ -60,37 +63,6 @@ def run(query: str) -> dict:
 
         # Decide which agent should handle the request
         agent = router.route(query)
-
-        if agent == "unsupported":
-
-            return {
-
-                "success": False,
-
-                "agent": "CrisisOps AI",
-
-                "confidence": 1.0,
-
-                "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-
-                "response": (
-                    "Sorry, I can't answer that question because it is outside my domain.\n\n"
-                    "I am designed specifically for Supply Chain Intelligence.\n\n"
-                    "I can help with:\n"
-                    "• Shipments\n"
-                    "• Suppliers\n"
-                    "• Inventory\n"
-                    "• Warehouses\n"
-                    "• Logistics\n"
-                    "• Demand Forecasting\n"
-                    "• Shipment Delays\n"
-                    "• Digital Twin Simulations\n"
-                    "• Recovery Planning\n"
-                    "• Executive Reporting\n\n"
-                    "Please ask a question related to supply chain operations."
-                ),
-
-            }
 
         confidence = router.confidence(query)
 

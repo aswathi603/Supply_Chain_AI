@@ -213,28 +213,47 @@ def render_history():
 
 def process_query(query: str):
 
+    # Store the user's question
+    memory.add(
+        role="user",
+        content=query,
+        time=datetime.now().strftime("%H:%M:%S"),
+    )
+
     with st.spinner("Analyzing supply chain..."):
 
         try:
 
-            # Base Agent stores the conversation.
-            run_workflow(query)
+            result = run_workflow(query)
+
+            response = result.get(
+                "response",
+                "No response generated.",
+            )
+
+            agent = result.get(
+                "agent",
+                "Supervisor",
+            )
+
+            # Store the assistant response
+            memory.add(
+                role="assistant",
+                content=response,
+                agent=agent,
+                time=datetime.now().strftime("%H:%M:%S"),
+            )
 
         except Exception as ex:
 
             memory.add(
-
                 role="assistant",
-
                 content=(
                     "An unexpected error occurred.\n\n"
                     f"{type(ex).__name__}: {ex}"
                 ),
-
                 agent="System",
-
                 time=datetime.now().strftime("%H:%M:%S"),
-
             )
 
     st.rerun()
