@@ -106,6 +106,59 @@ PROMPT_GROUPS = {
 
 
 # ==========================================================
+# Sidebar - Chat History
+# ==========================================================
+
+def render_sidebar_history():
+
+    with st.sidebar:
+
+        st.subheader("💬 Chats")
+
+        if st.button(
+            "➕ New Chat",
+            use_container_width=True,
+        ):
+            memory.new_chat()
+            st.rerun()
+
+        st.write("")
+
+        for chat in memory.all_chats():
+
+            col1, col2 = st.columns([5, 1])
+
+            with col1:
+
+                if st.button(
+                    chat["title"],
+                    key=f"chat_{chat['id']}",
+                    use_container_width=True,
+                ):
+                    memory.switch_chat(chat["id"])
+                    st.rerun()
+
+            with col2:
+
+                if st.button(
+                    "🗑",
+                    key=f"delete_{chat['id']}",
+                ):
+                    memory.delete_chat(chat["id"])
+                    st.rerun()
+
+        st.divider()
+
+        if st.button(
+            "🧹 Clear All Chats",
+            use_container_width=True,
+        ):
+            memory.clear()
+            st.rerun()
+
+
+
+# ==========================================================
 # Chat Page
 # ==========================================================
 
