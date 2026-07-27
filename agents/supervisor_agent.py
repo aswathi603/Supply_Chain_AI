@@ -7,6 +7,7 @@ executes it, and returns the response.
 """
 
 from datetime import datetime
+from agents import unsupported_agent
 
 from agents import (
     router,
@@ -33,6 +34,7 @@ REGISTRY = {
     "reporting": reporting_agent.run,
     "digital_twin": digital_twin_agent.run,
     "forecasting": forecasting_agent.run,
+    "unsupported": unsupported_agent.run,
 }
 
 
