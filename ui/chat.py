@@ -222,11 +222,12 @@ def render_chat():
                 with cols[i % 2]:
 
                     if st.button(
-                        prompt,
-                        key=f"{category}_{i}",
-                        use_container_width=True,
-                    ):
-                        process_query(prompt)
+                            prompt,
+                            key=f"{category}_{i}",
+                            use_container_width=True,
+                        ):
+                            st.session_state["pending_query"] = prompt
+                            st.rerun()
 
             st.write("")
 
@@ -234,12 +235,18 @@ def render_chat():
 
     render_history()
 
+    # Process quick action
+    pending = st.session_state.pop("pending_query", None)
+
+    if pending:
+        process_query(pending)
+
+    # Chat input
     query = st.chat_input(
         "Ask anything about your supply chain..."
     )
 
     if query:
-
         process_query(query)
 
 
