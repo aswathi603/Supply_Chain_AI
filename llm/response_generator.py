@@ -2,10 +2,12 @@
 LLM Response Generator.
 """
 
+from langsmith import traceable
 from llm.llm_loader import get_llm
 from llm.output_parser import to_text
 
 
+@traceable(name="LLM Response")
 def generate(
     system: str,
     user: str,
