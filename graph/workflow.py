@@ -1,10 +1,10 @@
 """
 Workflow entry.
 """
-
+from langsmith import traceable
 from graph.graph_builder import run
 
-
+@traceable(name="CrisisOps Workflow")
 def run_workflow(query: str) -> dict:
     """
     Public workflow entry point.
