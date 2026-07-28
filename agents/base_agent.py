@@ -74,22 +74,15 @@ def execute_agent(
     query: str,
     context: str,
     agent_name: str,
-) -> str:
-    """
-    Execute an AI agent.
-    """
+    ) -> str:
+        """
+        Execute an AI agent.
+        """
 
-    remember_user(query)
+        response = generate(
+            system=prompt,
+            user=query,
+            context=context,
+        )
 
-    response = generate(
-        system=prompt,
-        user=query,
-        context=context,
-    )
-
-    remember_assistant(
-        response,
-        agent_name,
-    )
-
-    return response
+        return response
