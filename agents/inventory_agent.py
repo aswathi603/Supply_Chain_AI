@@ -1,6 +1,7 @@
 """
 Inventory Agent
 """
+from langsmith import traceable
 
 from agents.base_agent import execute_agent, build_context
 
