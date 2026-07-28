@@ -40,7 +40,7 @@ def render_sidebar() -> str:
 
                 "Forecasting",
 
-                "About",
+                # "About",
 
             ],
 
