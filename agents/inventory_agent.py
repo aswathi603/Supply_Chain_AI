@@ -11,7 +11,7 @@ from tools.inventory_tools import (
     get_low_stock,
 )
 
-
+@traceable(name="Inventory Agent")
 def run(query: str) -> str:
 
     context = build_context(

@@ -1,6 +1,7 @@
 """
 Supplier Agent
 """
+from langsmith import traceable
 
 from agents.base_agent import execute_agent, build_context
 
@@ -11,7 +12,7 @@ from tools.supplier_tools import (
     get_risky,
 )
 
-
+@traceable(name="Supplier Agent")
 def run(query: str) -> str:
 
     context = build_context(

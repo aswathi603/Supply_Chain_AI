@@ -6,6 +6,8 @@ Determines the appropriate specialist agent,
 executes it, and returns the response.
 """
 
+from langsmith import traceable
+
 from datetime import datetime
 from agents import unsupported_agent
 
@@ -45,6 +47,7 @@ REGISTRY = {
 # Supervisor
 # ============================================================
 
+@traceable(name="Supervisor Agent")
 def run(query: str) -> dict:
     """
     Routes the query to the correct specialist agent.

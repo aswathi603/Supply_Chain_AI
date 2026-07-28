@@ -1,6 +1,7 @@
 """
 Incident Agent
 """
+from langsmith import traceable
 
 from agents.base_agent import execute_agent, build_context
 
@@ -11,7 +12,7 @@ from tools.incident_tools import (
     get_open,
 )
 
-
+@traceable(name="Recovery Agent")
 def run(query: str) -> str:
 
     context = build_context(

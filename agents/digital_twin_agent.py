@@ -1,6 +1,7 @@
 """
 Digital Twin Agent
 """
+from langsmith import traceable
 
 from agents.base_agent import execute_agent, build_context
 
@@ -10,7 +11,7 @@ from tools.digital_twin_tools import list_scenarios
 
 from digital_twin.recommendation_engine import compare_all_scenarios
 
-
+@traceable(name="Digital Twin Agent")
 def run(query: str) -> str:
     """
     Execute the Digital Twin agent.

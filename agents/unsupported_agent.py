@@ -1,7 +1,9 @@
 """
 Unsupported Agent
 """
+from langsmith import traceable
 
+@traceable(name="Unsupported Agent")
 def run(query: str) -> str:
 
     return f"""

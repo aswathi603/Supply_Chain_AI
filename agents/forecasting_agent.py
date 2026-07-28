@@ -1,6 +1,7 @@
 """
 Forecasting Agent
 """
+from langsmith import traceable
 
 from agents.base_agent import (
     execute_agent,
@@ -13,7 +14,7 @@ from tools.forecasting_tools import (
     get_all_forecasts,
 )
 
-
+@traceable(name="Forecasting Agent")
 def run(
     query: str,
 ) -> str:

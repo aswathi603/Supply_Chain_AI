@@ -2,6 +2,8 @@
 Shipment Agent
 """
 
+from langsmith import traceable
+
 from agents.base_agent import execute_agent, build_context
 
 from prompts.shipment_prompt import PROMPT
@@ -12,6 +14,7 @@ from tools.shipment_tools import (
 )
 
 
+@traceable(name="Shipment Agent")
 def run(query: str) -> str:
 
     context = build_context(
